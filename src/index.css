@@ -1,0 +1,106 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* ── Tailwind v4: theme ── */
+@theme {
+  --font-sans: 'DM Sans', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Brand palette */
+  --color-brand-50:  #f0f4ff;
+  --color-brand-100: #e0eaff;
+  --color-brand-200: #c7d7fe;
+  --color-brand-300: #a5bbfd;
+  --color-brand-400: #8196fa;
+  --color-brand-500: #6272f5;
+  --color-brand-600: #4c52e8;
+  --color-brand-700: #3e42cc;
+  --color-brand-800: #3338a4;
+  --color-brand-900: #2e3282;
+  --color-brand-950: #1c1d4c;
+
+  /* Surface tokens */
+  --color-surface:           #ffffff;
+  --color-surface-secondary: #f8fafc;
+  --color-surface-tertiary:  #f1f5f9;
+  --color-surface-dark:           #0f172a;
+  --color-surface-dark-secondary: #1e293b;
+  --color-surface-dark-tertiary:  #334155;
+
+  /* Animations */
+  --animate-fade-in:  fadeIn 0.3s ease-out;
+  --animate-slide-up: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+}
+
+/* ── Base ─────────────────────────────────────────────────────────────────── */
+:root { color-scheme: light; }
+.dark { color-scheme: dark; }
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-surface);
+  color: var(--color-slate-900, #0f172a);
+  transition: background-color 0.15s ease;
+}
+
+.dark body {
+  background-color: var(--color-surface-dark);
+  color: var(--color-slate-100, #f1f5f9);
+}
+
+::selection {
+  background-color: var(--color-brand-100);
+  color: var(--color-brand-900);
+}
+
+/* ── Component utilities ─────────────────────────────────────────────────── */
+@layer components {
+  .card {
+    background-color: white;
+    border-radius: 1rem;
+    border: 1px solid var(--color-slate-200, #e2e8f0);
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  }
+
+  .dark .card {
+    background-color: var(--color-surface-dark-secondary);
+    border-color: var(--color-slate-800, #1e293b);
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.125rem 0.5rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+}
+
+/* ── Scrollbar ───────────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 9999px; }
+::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+/* ── Focus visible ──────────────────────────────────────────────────────── */
+:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-brand-500), 0 0 0 4px white;
+}
