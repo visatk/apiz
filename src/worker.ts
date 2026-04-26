@@ -1,15 +1,15 @@
 import { Hono } from "hono";
-import type { Env } from "./types/index.js";
+import type { Env } from "./types/index";
 import {
   securityHeaders,
   corsMiddleware,
   requestId,
   rateLimiter,
   logger,
-} from "./api/middleware/security.js";
-import { health } from "./api/routes/health.js";
-import { auth } from "./api/routes/auth.js";
-import { items } from "./api/routes/items.js";
+} from "./api/middleware/security";
+import { health } from "./api/routes/health";
+import { auth } from "./api/routes/auth";
+import { items } from "./api/routes/items";
 
 // ─── App ──────────────────────────────────────────────────────────────────────
 const app = new Hono<{ Bindings: Env }>();
